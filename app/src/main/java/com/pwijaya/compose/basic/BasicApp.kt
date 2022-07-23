@@ -10,6 +10,7 @@ import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -19,7 +20,7 @@ import com.pwijaya.compose.ui.theme.JetpackComposePlaygroundTheme
 @Composable
 fun MyBasicApp(names: List<String> = listOf("World", "Compose")) {
 
-    var shouldShowOnboarding by remember {
+    var shouldShowOnboarding by rememberSaveable {
         mutableStateOf(true)
     }
 
