@@ -5,10 +5,16 @@
       <map>
         <entry key="../../../../../../layout/compose-model-1658550345359.xml" value="0.25" />
         <entry key="../../../../../../layout/compose-model-1658551910290.xml" value="0.2276936026936027" />
+        <entry key="../../../../../../layout/compose-model-1658562207018.xml" value="0.165" />
+        <entry key="../../../../../../layout/compose-model-1658572295573.xml" value="0.22853535353535354" />
+        <entry key="../../../../../../layout/compose-model-1658573076071.xml" value="0.22853535353535354" />
+        <entry key="../../../../../../layout/compose-model-1658573148147.xml" value="0.5" />
+        <entry key="../../../../../../layout/compose-model-1658574988911.xml" value="0.10732323232323232" />
+        <entry key="../../../../../../layout/compose-model-1658575497231.xml" value="0.335" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

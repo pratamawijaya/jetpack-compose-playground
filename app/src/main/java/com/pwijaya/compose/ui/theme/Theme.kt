@@ -40,7 +40,7 @@ fun JetpackComposePlaygroundTheme(
 
     MaterialTheme(
         colors = colors,
-        typography = Typography,
+        typography = typography,
         shapes = Shapes,
         content = content
     )
