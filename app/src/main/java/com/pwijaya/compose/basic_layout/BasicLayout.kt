@@ -37,7 +37,9 @@ import com.pwijaya.compose.ui.theme.JetpackComposePlaygroundTheme
 @Composable
 fun BasicLayoutApp() {
     Scaffold(
-        bottomBar = { }
+        bottomBar = {
+            MyBottomNav()
+        }
     ) { padding ->
         BasicLayoutHomeScreen(modifier = Modifier.padding(padding))
     }
@@ -85,7 +87,7 @@ data class DrawableStringPair(
 )
 
 
-@Preview(showBackground = true, backgroundColor = 0xFFF0EAE2, heightDp = 180)
+@Preview(showBackground = true, backgroundColor = 0xFFF0EAE2, heightDp = 280)
 @Composable
 fun PreviewAlignYourBodyElement() {
     JetpackComposePlaygroundTheme {
