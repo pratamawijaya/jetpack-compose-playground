@@ -10,7 +10,9 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
@@ -43,7 +45,9 @@ fun BasicLayoutApp() {
 
 @Composable
 fun BasicLayoutHomeScreen(modifier: Modifier = Modifier) {
-    Column {
+    Column(
+        modifier = modifier.verticalScroll(rememberScrollState())
+    ) {
         SearchBar(modifier = Modifier)
 
         HomeSection(title = R.string.align_your_body) {
@@ -81,7 +85,7 @@ data class DrawableStringPair(
 )
 
 
-@Preview(showBackground = true, backgroundColor = 0xFFF0EAE2)
+@Preview(showBackground = true, backgroundColor = 0xFFF0EAE2, heightDp = 180)
 @Composable
 fun PreviewAlignYourBodyElement() {
     JetpackComposePlaygroundTheme {
