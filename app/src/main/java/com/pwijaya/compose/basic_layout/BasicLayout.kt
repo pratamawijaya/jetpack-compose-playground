@@ -29,6 +29,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.pwijaya.compose.R
 import com.pwijaya.compose.basic_layout.ui.components.*
+import com.pwijaya.compose.basic_layout.ui.components.slot_section.HomeSection
 import com.pwijaya.compose.ui.theme.JetpackComposePlaygroundTheme
 
 @Composable
@@ -44,27 +45,18 @@ fun BasicLayoutApp() {
 fun BasicLayoutHomeScreen(modifier: Modifier = Modifier) {
     Column {
         SearchBar(modifier = Modifier)
-        Text(
-            text = "Align Your Body", style = MaterialTheme.typography.h2,
-            modifier = modifier.padding(top = 16.dp, start = 16.dp, bottom = 8.dp)
-        )
-        AlignYourBodyRow(
-            alignYourBodyData,
-            modifier = modifier
-        )
-        Text(
-            text = "Favorite Collection", style = MaterialTheme.typography.h2,
-            modifier = modifier.padding(top = 16.dp, start = 16.dp, bottom = 8.dp)
-        )
-        FavoriteGrid(
-            favoriteCollectionsData,
-            modifier = modifier
-        )
+
+        HomeSection(title = R.string.align_your_body) {
+            AlignYourBodyRow(data = alignYourBodyData, modifier = modifier)
+        }
+
+        HomeSection(title = R.string.favorite_collections) {
+            FavoriteGrid(data = favoriteCollectionsData, modifier = modifier)
+        }
     }
 }
 
-
-private val alignYourBodyData = listOf(
+val alignYourBodyData = listOf(
     R.drawable.ab1_inversions to R.string.ab1_inversions,
     R.drawable.ab2_quick_yoga to R.string.ab2_quick_yoga,
     R.drawable.ab3_stretching to R.string.ab3_stretching,
@@ -73,7 +65,7 @@ private val alignYourBodyData = listOf(
     R.drawable.ab6_pre_natal_yoga to R.string.ab6_pre_natal_yoga
 ).map { DrawableStringPair(it.first, it.second) }
 
-private val favoriteCollectionsData = listOf(
+val favoriteCollectionsData = listOf(
     R.drawable.fc1_short_mantras to R.string.fc1_short_mantras,
     R.drawable.fc2_nature_meditations to R.string.fc2_nature_meditations,
     R.drawable.fc3_stress_and_anxiety to R.string.fc3_stress_and_anxiety,
