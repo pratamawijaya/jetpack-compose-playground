@@ -3,6 +3,7 @@ package com.pwijaya.compose.basic_layout
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -10,22 +11,25 @@ import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.rounded.Menu
+import androidx.compose.material.icons.rounded.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.pwijaya.compose.R
-import com.pwijaya.compose.basic_layout.ui.components.FavoriteCollectionCard
+import com.pwijaya.compose.basic_layout.ui.components.*
 import com.pwijaya.compose.ui.theme.JetpackComposePlaygroundTheme
-
 
 @Composable
 fun BasicLayoutApp() {
@@ -38,84 +42,27 @@ fun BasicLayoutApp() {
 
 @Composable
 fun BasicLayoutHomeScreen(modifier: Modifier = Modifier) {
-    Column() {
+    Column {
+        SearchBar(modifier = Modifier)
         Text(
             text = "Align Your Body", style = MaterialTheme.typography.h2,
-            modifier = Modifier.padding(horizontal = 16.dp)
+            modifier = modifier.padding(top = 16.dp, start = 16.dp, bottom = 8.dp)
         )
-        AlignYourBodyRow()
-        Spacer(modifier = Modifier.height(16.dp))
+        AlignYourBodyRow(
+            alignYourBodyData,
+            modifier = modifier
+        )
         Text(
             text = "Favorite Collection", style = MaterialTheme.typography.h2,
-            modifier = Modifier.padding(horizontal = 16.dp)
+            modifier = modifier.padding(top = 16.dp, start = 16.dp, bottom = 8.dp)
         )
-        Spacer(modifier = Modifier.height(16.dp))
-        FavoriteGrid()
-    }
-}
-
-@Composable
-fun AlignYourBodyRow(
-    modifier: Modifier = Modifier
-) {
-    LazyRow(
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        contentPadding = PaddingValues(horizontal = 16.dp),
-        modifier = modifier.padding(top = 16.dp)
-    ) {
-        items(alignYourBodyData) { item ->
-            AlignYourBodyElement(drawable = item.drawable, text = item.text)
-        }
-    }
-
-}
-
-@Composable
-fun FavoriteGrid(modifier: Modifier = Modifier) {
-    LazyHorizontalGrid(
-        rows = GridCells.Fixed(2),
-        contentPadding = PaddingValues(horizontal = 16.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-        modifier = modifier.height(120.dp)
-    ) {
-        items(favoriteCollectionsData) { item ->
-            FavoriteCollectionCard(
-                imgResource = item.drawable,
-                text = item.text,
-                modifier = Modifier.height(56.dp)
-            )
-        }
-    }
-}
-
-
-@Composable
-fun AlignYourBodyElement(
-    @DrawableRes drawable: Int,
-    @StringRes text: Int,
-    modifier: Modifier = Modifier
-) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier
-    ) {
-        Image(
-            painter = painterResource(drawable),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .size(88.dp)
-                .clip(CircleShape)
-        )
-        Text(
-            text = stringResource(id = text),
-            style = MaterialTheme.typography.h3,
-            modifier = Modifier.paddingFromBaseline(bottom = 8.dp, top = 24.dp)
+        FavoriteGrid(
+            favoriteCollectionsData,
+            modifier = modifier
         )
     }
-
 }
+
 
 private val alignYourBodyData = listOf(
     R.drawable.ab1_inversions to R.string.ab1_inversions,
@@ -136,7 +83,7 @@ private val favoriteCollectionsData = listOf(
 ).map { DrawableStringPair(it.first, it.second) }
 
 
-private data class DrawableStringPair(
+data class DrawableStringPair(
     @DrawableRes val drawable: Int,
     @StringRes val text: Int
 )
